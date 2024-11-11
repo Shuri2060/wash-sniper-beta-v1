@@ -23,6 +23,9 @@
     <div class="main">
         <h1>Wash Sniper | v0.1.0 Beta release</h1>
         <p>
+            Dev flying to devcon ✈️. page closed. Plez patienze
+        </p>
+        <p>
             <b>WARNING:</b> All USDC spot on the sniper account will attempted to be used to snipe. Remove excess to perps wallet or another account. Since this is an early launch, I recommend only using a small amount to test.
         </p>
         <h2>Upcoming Launches</h2>
@@ -87,7 +90,8 @@
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="STRICT">$STRICT (index 133)</option>
+                    <!-- <option value="STRICT">$STRICT (index 133)</option> -->
+                    <option value="blank">Nothing listed yet</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -123,7 +127,7 @@
                 </p>
                 <div class="grid">
                     <div class="top left">
-                        <button id="executeNow" class="green">
+                        <button id="executeNow" class="green" disabled>
                             <b>EXECUTE</b> orders <b>NOW</b><br>
                             <br>
                             <img src="res/button_160.png"><br>
@@ -131,7 +135,7 @@
                     </div>
                     <div id="msgExecuting" class="bottom left msg">Executing</div>
                     <div class="top right">
-                        <button id="executeTimed" class="green">
+                        <button id="executeTimed" class="green" disabled>
                             <b>EXECUTE</b> timed orders<br>
                             <br>
                             <img src="res/sixpm_160.png"><br>
