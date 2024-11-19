@@ -23,18 +23,15 @@
     <div class="main">
         <h1>Wash Sniper | v0.1.0 Beta release</h1>
         <p>
-            Dev flying to devcon ✈️. page closed. Plez patienze
-        </p>
-        <p>
             <b>WARNING:</b> All USDC spot on the sniper account will attempted to be used to snipe. Remove excess to perps wallet or another account. Since this is an early launch, I recommend only using a small amount to test.
         </p>
         <h2>Upcoming Launches</h2>
         <p>
-            Only known launches are listed here. You will be able to manually input unlisted launches after the next update (tentatively 14th Nov).<br>
+            Only known launches are listed here. You will be able to manually input unlisted launches after the next update (tentatively <s>14th</s> 21st Nov (bahaha)).<br>
             All listed launch info comes from external sources, please verify it yourself and DYOR. Errors deploying and/or malicious deployment may occur.<br>
         </p>
         <details class="launch">
-            <summary>$STRICT</summary>
+            <summary>$STRICT&nbsp</summary>
             <p class="details">
                 Launch: 2024-11-11 18:00:00 UTC<br>
                 <br>
@@ -48,6 +45,23 @@
                 HIP2 Start: $0.0001 ($100_000 MC)<br>
                 <br>
                 <small>(source: deployer TG @brendvn)</small>
+            </p>
+        </details>
+        <details class="launch">
+            <summary>$UP&nbsp&nbsp&nbsp&nbsp</summary>
+            <p class="details">
+                Launch: 2024-11-19 14:00:00 UTC<br>
+                <br>
+                Supply: &nbsp&nbsp&nbsp10_000_000 (100%)<br>
+                - HIP2: &nbsp&nbsp&nbsp&nbsp8_470_000 (84.7%)<br>
+                - Team: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp420_000 (4.2%)<br>
+                - Token: &nbsp&nbsp&nbsp1_110_000 (11.1%)<br>
+                &nbsp&nbsp- $PURR: &nbsp&nbsp&nbsp690_000 (6.9%)<br>
+                &nbsp&nbsp- $CATBAL: &nbsp420_000 (4.2%)<br>
+                <br>
+                HIP2 Start: &nbsp&nbsp$0.001 ($10_000 MC)<br>
+                <br>
+                <small>(source: deployer TG @uponhlio)</small>
             </p>
         </details>
         <details class="step" open>
@@ -90,8 +104,7 @@
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <!-- <option value="STRICT">$STRICT (index 133)</option> -->
-                    <option value="blank">Nothing listed yet</option>
+                    <option value="UP">$UP (index 115)</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -117,7 +130,11 @@
             <summary>Step 3: Execute</summary>
             <div class="details">
                 <p>
-                    Choose 1. Refresh or Close this page to stop execution / change setup<br>
+                    Choose either to execute now, or at a specific time.<br>
+                    <br>
+                    <b>ISSUE REPORTED</b>: sniper takes ~5 secs to trigger, so set the time / execution to at least 5-10 secs before. 20 seconds before is fine. Will fix.<br>
+                    <br>
+                    Refresh or Close this page to stop execution / change setup.<br>
                     <br>
                     <b>Provisional Sniper Restrictions</b><br>
                     Orders per second = min(WASH_BALANCE / 180, 25)<br>
@@ -127,7 +144,7 @@
                 </p>
                 <div class="grid">
                     <div class="top left">
-                        <button id="executeNow" class="green" disabled>
+                        <button id="executeNow" class="green">
                             <b>EXECUTE</b> orders <b>NOW</b><br>
                             <br>
                             <img src="res/button_160.png"><br>
@@ -135,7 +152,7 @@
                     </div>
                     <div id="msgExecuting" class="bottom left msg">Executing</div>
                     <div class="top right">
-                        <button id="executeTimed" class="green" disabled>
+                        <button id="executeTimed" class="green">
                             <b>EXECUTE</b> timed orders<br>
                             <br>
                             <img src="res/sixpm_160.png"><br>
@@ -143,7 +160,7 @@
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="17:59:45" required><br>
+                        <input id="timeStart" type="time" step="1" value="13:59:40" required><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>
                         <br>
