@@ -3,6 +3,10 @@
     color: #97fce4;
 }
 
+.show {
+    visibility: visible;
+}
+
 .error {
     color: #dd7789;
 }

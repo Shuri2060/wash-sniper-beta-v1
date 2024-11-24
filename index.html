@@ -27,7 +27,7 @@
         </p>
         <h2>Upcoming Launches</h2>
         <p>
-            Only known launches are listed here. You will be able to manually input unlisted launches after the next update (tentatively <s>14th</s> 21st Nov (bahaha)).<br>
+            Only known launches are listed here. You will be able to manually input unlisted launches after the next update (tentatively <s>14th</s> ???th Nov (bahaha)).<br>
             All listed launch info comes from external sources, please verify it yourself and DYOR. Errors deploying and/or malicious deployment may occur.<br>
         </p>
         <details class="launch">
@@ -50,7 +50,7 @@
         <details class="launch">
             <summary>$UP&nbsp&nbsp&nbsp&nbsp</summary>
             <p class="details">
-                Launch: 2024-11-19 <s>14:00:00 UTC</s> 15:00:00 UTC (updated)<br>
+                Launch: 2024-11-19 15:00:00 UTC<br>
                 <br>
                 Supply: &nbsp&nbsp&nbsp10_000_000 (100%)<br>
                 - HIP2: &nbsp&nbsp&nbsp&nbsp8_470_000 (84.7%)<br>
@@ -63,7 +63,24 @@
                 <br>
                 <small>(source: deployer TG @uponhlio)</small><br>
                 <br>
-                Update: launch did not happen at 1400 UTC and will be delayed to 1500 UTC.
+                Update: moved from 1400 to 1500 UTC
+            </p>
+        </details>
+        <details class="launch">
+            <summary>$LUCKY&nbsp</summary>
+            <p class="details">
+                Launch: 2024-11-24 23:59:59 UTC<br>
+                <br>
+                Supply: &nbsp&nbsp&nbsp&nbsp925_600_000 (100%)<br>
+                - HIP2: &nbsp&nbsp&nbsp&nbsp545_600_000 (58.95%)<br>
+                - Team: &nbsp&nbsp&nbsp&nbsp&nbsp50_000_000 (&nbsp5.40%)<br>
+                - Token: &nbsp&nbsp&nbsp330_000_000 (35.65%)<br>
+                &nbsp&nbsp- $PURR: &nbsp165_000_000 (17.83%)<br>
+                &nbsp&nbsp- $YEETI: 165_000_000 (17.83%)<br>
+                <br>
+                HIP2 Start: $0.00004169 ($38_588.264 MC)<br>
+                <br>
+                <small>(source: <a href="https://x.com/LUCKY_Intern/status/1860781426922188875" target="_blank" rel="noopener noreferrer"><small>LUCKY intern twitter</small></a>)</small><br>
             </p>
         </details>
         <details class="step" open>
@@ -106,7 +123,7 @@
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="UP">$UP (index 115)</option>
+                    <option value="LUCKY">$LUCKY (index 143)</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -162,7 +179,8 @@
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="14:59:40" required><br>
+                        <input id="timeStart" type="time" step="1" value="23:59:40" required>
+                        <label for="timeStart">Warning: this executes at the time today. Do not put a time after 00:00</label><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>
                         <br>
