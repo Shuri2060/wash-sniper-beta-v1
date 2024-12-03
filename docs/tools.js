@@ -95,6 +95,12 @@
                         user,
                     }
                 },
+                userRateLimit({ user }) {
+                    return {
+                        type: 'userRateLimit',
+                        user,
+                    }
+                },
             },
             spotDeploy: {
                 registerToken({ name, szDecimals, weiDecimals, maxGasE6, fullName }) {
@@ -324,9 +330,9 @@
                             const payload = Hyperliquid.actions.info.referral({ user: address })
                             const resp = await Hyperliquid.requests.postInfoAsync({ url: URLS[IS_MAINNET], payload })
                             const referred = resp.referrerState.data?.referralStates?.reduce((s, user) => s + `${user.user} | ${new Date(user.timeJoined).toISOString()} | ${String(user.cumVlm).padStart(15)} | ${String(user.cumRewardedFeesSinceReferred).padStart(15)} | ${String(user.cumFeesRewardedToReferrer).padStart(15)}\n`, '') || '\n'
-                            elements.tools.other.referDisplay.element.value = `Address:\t\t${address}
-Referred By:\t\t${resp.referredBy?.referrer || 'none'} (code ${resp.referredBy?.code || 'N/A'})
+                            elements.tools.other.infoDisplay.element.value = `Address:\t\t${address}
 Cumulative Volume:\t${resp.cumVlm}
+Referred By:\t\t${resp.referredBy?.referrer || 'none'} (code ${resp.referredBy?.code || 'N/A'})
 
 Referral Code:\t\t${resp.referrerState.data?.code || ''}
 ${'Referred'.padEnd(42)} | ${'Joined'.padEnd(24)} | ${'Volume'.padEnd(15)} | ${'Fees Paid'.padEnd(15)} | ${'Rewards'.padEnd(15)}
@@ -334,21 +340,41 @@ ${'='.repeat(42 + 24 + 15 * 3 + 3 * 4)}
 ${referred}
 Unclaimed Rewards:\t${resp.unclaimedRewards}
 Claimed Rewards:\t${resp.claimedRewards}
-Builder Rewards:\t${resp.builderRewards}
-`
+Builder Rewards:\t${resp.builderRewards}`
                         } catch (e) {
-                            elements.tools.other.referDisplay.element.value = `${e}`
+                            elements.tools.other.infoDisplay.element.value = `${e}`
+                        }
+                        this.disabled = false
+                    }
+                },
+                rateLimitFetch: {
+                    async click(e) {
+                        try {
+                            this.disabled = true
+                            const address = elements.tools.input.referAddress.element.value
+                            if (address.length !== 42 || !address.match(/^0x[0-9a-f]+$/i)) throw 'Error: Invalid address'
+
+                            const payload = Hyperliquid.actions.info.userRateLimit({ user: address })
+                            const resp = await Hyperliquid.requests.postInfoAsync({ url: URLS[IS_MAINNET], payload })
+                            elements.tools.other.infoDisplay.element.value = `Address:\t\t${address}
+Cumulative Volume:\t${resp.cumVlm}
+
+Requests Used:\t${resp.nRequestsUsed}
+Requests Cap:\t${resp.nRequestsCap}
+Requests Left:\t${resp.nRequestsCap - resp.nRequestsUsed}`
+                        } catch (e) {
+                            elements.tools.other.infoDisplay.element.value = `${e}`
                         }
                         this.disabled = false
                     }
                 },
             },
             input: {
-                referAddress: {}
+                referAddress: {},
             },
             other: {
-                referDisplay: {}
-            }
+                infoDisplay: {},
+            },
         },
     }
 

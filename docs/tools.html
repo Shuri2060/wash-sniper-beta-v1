@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper - Tools</title>
+    <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script>
+    <!--https://github.com/msgpack/msgpack-javascript-->
     <script type="module" src="tools.js"></script>
 </head>
 
@@ -26,7 +28,8 @@
             Random tools that might be handy (adding as I go along)
         </p>
         <input id="referAddress" class="big" type="text" size="42" minlength="42" maxlength="42" placeholder="Address">
-        <button id="referFetch" class="big green">Get Referral Info</button><br>
-        <textarea id="referDisplay" rows="40" cols="150" readonly></textarea>
+        <button id="referFetch" class="big green">Get Referral Info</button>
+        <button id="rateLimitFetch" class="big green">Get Rate Limits</button><br>
+        <textarea id="infoDisplay" rows="40" cols="150" readonly></textarea>
     </div>
 </body></html>
