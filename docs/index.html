@@ -10,13 +10,15 @@
     <title>Wash Sniper</title>
     <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script>
     <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js"></script>
+    <script type="module" src="index.js?version=20241202"></script>
 </head>
 
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="topnav">
         <a class="active" href="index.html">Sniper</a>
+        <a href="deploy.html">Deploy</a>
+        <a href="tools.html">Tools</a>
         <a href="tutorial.html">Tutorial</a>
         <a href="about.html">About</a>
     </div>
@@ -35,7 +37,7 @@
             <p class="details">
                 Launch: 2024-11-29 07:30:00 UTC<br>
                 <br>
-                <b>Supply: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1_000_000_000 (100%)</b><br>
+                <b>HYPE&nbsp&nbsp: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1_000_000_000 (100%)</b><br>
                 - HIP2: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp120_000 (0.012%)<br>
                 - Team: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp238_000_000 (23.8%)<br>
                 - <b>Community: &nbsp&nbsp&nbsp&nbsp762_000_000 (76.2%)</b><br>
@@ -44,7 +46,7 @@
                 &nbsp&nbsp- Foundation: &nbsp&nbsp60_000_000 (6%)<br>
                 &nbsp&nbsp- Grants: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3_000_000 (0.3%)<br>
                 <br>
-                HIP2 Start: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Unknown</b><br>
+                HIP2: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Unknown</b><br>
                 <br>
                 1e9 * .31 / 57.9e6 = <b>~5.354 HYPE per point</b> (if linear)<br>
                 <br>
@@ -54,7 +56,40 @@
         <details class="launch">
             <summary>$MUNCH&nbsp</summary>
             <p class="details">
-                Launch: TBA (sniper will be set up; planned Wash Sniping Vault airdrop to $WASH holders, more info by MUNCH soon)
+                Launch: 2024-12-03 18:00:00 UTC<br>
+                <br>
+                <b>MUNCH&nbsp: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2_700_000_000 (100%)</b><br>
+                - HIP2: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1_800_000_000 (66.67%)<br>
+                <b>- Team: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp21_600_000 (0.8%)</b><br>
+                &nbsp&nbsp- M S: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp10_800_000 (0.4%)<br>
+                &nbsp&nbsp- Shuri2060: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp10_800_000 (0.4%)<br>
+                <b>- Presale: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp602_550_000 (22.32%)</b><br>
+                &nbsp&nbsp- 100k MC (31): &nbsp&nbsp&nbsp209_250_000 (7.75%)<br>
+                &nbsp&nbsp- 125k MC (15): &nbsp&nbsp&nbsp162_000_000 (6%)<br>
+                &nbsp&nbsp- 150k MC (12+3): &nbsp231_300_000 (8.57%)<br>
+                <b>- Token: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp275_850_000 (10.22%)</b><br>
+                &nbsp&nbsp- $HYPE: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp89_550_000 (3.32%)<br>
+                &nbsp&nbsp- $YEETI: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp186_300_000 (6.9%)<br>
+                <br>
+                <b>HIP2:</b><br>
+                <b>&nbsp&nbsp- Start: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$0.00000370 ($9_990 MC)</b><br>
+                &nbsp&nbsp- Order Size: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp450_000<br>
+                &nbsp&nbsp- Num Orders: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp4000<br>
+                &nbsp&nbsp- Seeded Orders: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0<br>
+                <br>
+                The presale collected $28_100 from 61 users. Users could buy in at<br>
+                - 100k MC ($250) = &nbsp&nbsp6_750_000 MUNCH each<br>
+                - 125k MC ($500) = &nbsp10_800_000 MUNCH each<br>
+                - 150k MC ($1000) = 18_000_000 MUNCH each<br>
+                <br>
+                3 late users were let in with less than $1000 at 150k MC.<br>
+                M S and Shuri2060 receive free 125k MC ($500) allocations for the work they did:<br>
+                - meme creation + marketing<br>
+                - presale + fund management<br>
+                <br>
+                Full presale information in this <a href="https://docs.google.com/document/d/1CENQnz3FKo5_sHHGMei7CvVpalfWUOP6eV5rIbOJhb0" target="_blank" rel="noopener noreferrer">google doc</a><br>
+                <br>
+                <small>(source: @Shuri2060)</small><br>
             </p>
         </details>
         <details class="launch">
@@ -68,25 +103,25 @@
             <div class="details">
                 <div>
                     <button id="washLogin" class="login blue big"><b>$WASH</b> login</button>
-                    <input id="washAddress" class="big" type="text" size="42" minlength="42" maxlength="42" disabled value="Disconnected">
+                    <input id="washAddress" class="big" type="text" size="42" minlength="42" maxlength="42" disabled placeholder="Disconnected">
                     <button id="washCopy" class="blue big" disabled>Copy</button>
                 </div>
                 <div style="height: 4px;"></div>
                 <div>
                     <label for="washBalance">$WASH spot balance:</label>
-                    <input id="washBalance" type="text" size="10" disabled value="N/A">
+                    <input id="washBalance" type="text" size="10" disabled placeholder="N/A">
                     <button id="washBalanceRefresh" class="blue" disabled>Refresh</button>
                 </div>
                 <div style="height: 16px;"></div>
                 <div>
                     <button id="sniperConnect" class="login blue big" disabled><b>Sniper</b> connect</button>
-                    <input id="sniperAddress" class="big" type="text" size="42" minlength="42" maxlength="42" disabled value="Disconnected">
+                    <input id="sniperAddress" class="big" type="text" size="42" minlength="42" maxlength="42" disabled placeholder="Disconnected">
                     <button id="sniperCopy" class="blue big" disabled>Copy</button>
                 </div>
                 <div style="height: 4px;"></div>
                 <div>
                     <label for="sniperBalance">$USDC spot balance:</label>
-                    <input id="sniperBalance" type="text" size="10" disabled value="N/A">
+                    <input id="sniperBalance" type="text" size="10" disabled placeholder="N/A">
                     <button id="sniperBalanceRefresh" class="blue" disabled>Refresh</button>
                 </div>
                 <div style="height: 16px;"></div>
@@ -111,7 +146,7 @@
                 <label for="orderMarketCap">Market Cap&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                 <input id="orderMarketCap" type="number" required><br>
                 <!-- <label for="orderPrice">Order Price (USD)</label>
-                <input id="orderPrice" type="text" disabled value="N/A"><br> -->
+                <input id="orderPrice" type="text" disabled placeholder="N/A"><br> -->
                 <label for="orderNumber">Number of Orders&nbsp;</label>
                 <input id="orderNumber" type="number" required value="100">
                 <div style="height: 16px"></div>
