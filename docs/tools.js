@@ -323,9 +323,9 @@
 
                             const payload = Hyperliquid.actions.info.referral({ user: address })
                             const resp = await Hyperliquid.requests.postInfoAsync({ url: URLS[IS_MAINNET], payload })
-                            const referred = resp.referrerState.data.referralStates.reduce((s, user) => s + `${user.user} | ${new Date(user.timeJoined).toISOString()} | ${String(user.cumVlm).padStart(15)} | ${String(user.cumRewardedFeesSinceReferred).padStart(15)} | ${String(user.cumFeesRewardedToReferrer).padStart(15)}\n`, '')
+                            const referred = resp.referrerState.data.referralStates?.reduce((s, user) => s + `${user.user} | ${new Date(user.timeJoined).toISOString()} | ${String(user.cumVlm).padStart(15)} | ${String(user.cumRewardedFeesSinceReferred).padStart(15)} | ${String(user.cumFeesRewardedToReferrer).padStart(15)}\n`, '') || '\n'
                             elements.tools.other.referDisplay.element.value = `Address:\t\t${address}
-Referred By:\t\t${resp.referredBy.referrer} (code ${resp.referredBy.code})
+Referred By:\t\t${resp.referredBy?.referrer} (code ${resp.referredBy?.code})
 Cumulative Volume:\t${resp.cumVlm}
 
 Referral Code:\t\t${resp.referrerState.data.code}
