@@ -8,9 +8,8 @@
 
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper</title>
-    <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script>
-    <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js?version=202412031"></script>
+    <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script> <!--https://github.com/msgpack/msgpack-javascript-->
+    <script type="module" src="index.js?version=20241209"></script>
 </head>
 
 <body>
@@ -96,9 +95,18 @@
         </details>
         <details class="launch">
             <summary>$PICKL&nbsp</summary>
-            <p class="details">
-                Launch: TBA (sniper will likely be set up)
-            </p>
+<pre class="details">Launch: 2024-12-09 14:00:00 UTC
+
+<b>PICKL :           1_000_000 (100%)</b>
+- HIP2:             600_000 (60%)
+- Team:              50_000 (5%)
+- Airdrop 1:        150_000 (15%)
+- Pick'em Rewards:  200_000 (20%)
+
+<b>HIP2:</b>
+- Start:               $0.1 ($100_000 MC)
+
+<small>(source: <a href="https://x.com/HYPICKL" target="_blank" rel="noopener noreferrer"><small>https://x.com/HYPICKL</small></a>)</small></pre>
         </details>
         <details class="step" open>
             <summary>Step 1: Connect</summary>
@@ -140,7 +148,7 @@
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="MUNCH">$MUNCH (index 146)</option>
+                    <option value="PICKL">$PICKL (index 103)</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -175,7 +183,7 @@
                     <b>Provisional Sniper Restrictions</b><br>
                     Orders per second = min(WASH_BALANCE / 180, 25)<br>
                     <br>
-                    So the sniper maxes out at 4500 $WASH currently. This was a very hastily coded restriction, and will change in the next version to be smoother.<br>
+                    So the sniper maxes out at 4500 $WASH currently.<br>
                     Currently, the users with more than 4500 $WASH can still benefit by splitting into multiple WASH wallets to snipe on multiple tabs.
                 </p>
                 <div class="grid">
@@ -196,7 +204,7 @@
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="17:59:40" required>
+                        <input id="timeStart" type="time" step="1" value="13:59:40" required>
                         <label for="timeStart">Warning: this executes at the time today. Do not put a time after 00:00</label><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>

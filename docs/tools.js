@@ -419,11 +419,11 @@ Max Supply:\t\t${state.maxSupply}
                             }
                             elements.tools.other.infoDisplay.element.value = `Address:\t\t${address}
 
-Deployment:
+Deployment
 ${deployState}
 
 Auction Info
-Start Time:\t${new Date(resp.gasAuction.startTimeSeconds * 1000)}
+Start Time:\t${new Date(resp.gasAuction.startTimeSeconds * 1000).toISOString()}
 Hours:\t\t${resp.gasAuction.durationSeconds / 3600}
 Start Gas:\t${resp.gasAuction.startGas}
 Current Gas:\t${resp.gasAuction.currentGas}
