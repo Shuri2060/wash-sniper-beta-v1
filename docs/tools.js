@@ -89,6 +89,12 @@
                 }
             },
             info: {
+                spotMeta({ }) {
+                    return { type: 'spotMeta' }
+                },
+                spotClearinghouseState({ user }) {
+                    return { type: 'spotClearinghouseState', user }
+                },
                 referral({ user }) {
                     return {
                         type: 'referral',
@@ -98,6 +104,12 @@
                 userRateLimit({ user }) {
                     return {
                         type: 'userRateLimit',
+                        user,
+                    }
+                },
+                spotDeployState({ user }) {
+                    return {
+                        type: 'spotDeployState',
                         user,
                     }
                 },
@@ -317,6 +329,14 @@
         true: 'wss://api.hyperliquid.xyz/ws',
     }
 
+    const CHAIN_IDS = {
+        false: 421614,
+        true: 42161,
+    }
+
+    function chainIdHex(chainId) { return `0x${chainId.toString(16)}` }
+    function chainIdHexHL(isMainnet) { return chainIdHex(CHAIN_IDS[IS_MAINNET]) }
+
     const elements = {
         tools: {
             button: {
@@ -368,6 +388,53 @@ Requests Left:\t${resp.nRequestsCap - resp.nRequestsUsed}`
                         this.disabled = false
                     }
                 },
+                deployFetch: {
+                    async click(e) {
+                        try {
+                            this.disabled = true
+                            const address = elements.tools.input.referAddress.element.value
+                            if (address.length !== 42 || !address.match(/^0x[0-9a-f]+$/i)) throw 'Error: Invalid address'
+
+                            const payload = Hyperliquid.actions.info.spotDeployState({ user: address })
+                            const resp = await Hyperliquid.requests.postInfoAsync({ url: URLS[IS_MAINNET], payload })
+                            let deployState = ''
+                            let state = resp.states[0]
+                            if (state) {
+                                deployState = `Name:\t\t\t${state.spec.name}
+Full Name:\t\t${state.fullName}
+Index:\t\t\t${state.token}
+Size Decimals:\t\t${state.spec.szDecimals}
+Wei Decimals:\t\t${state.spec.weiDecimals}
+
+User Genesis:
+${state.userGenesisBalances.reduce((s, c) => s + `${c[0]}: ${c[1]}\n`, '')}
+Token Genesis:
+${state.existingTokenGenesisBalances.reduce((s, c) => s + `${c[0]}: ${c[1]}\n`, '')}
+Total Genesis Wei:\t${state.totalGenesisBalanceWei}
+
+Spots:\t\t\t${state.spots}
+HIP2:\t\t\t${state.hyperliquidityGenesisBalance}
+Max Supply:\t\t${state.maxSupply}
+`
+                            }
+                            elements.tools.other.infoDisplay.element.value = `Address:\t\t${address}
+
+Deployment:
+${deployState}
+
+Auction Info
+Start Time:\t${new Date(resp.gasAuction.startTimeSeconds * 1000)}
+Hours:\t\t${resp.gasAuction.durationSeconds / 3600}
+Start Gas:\t${resp.gasAuction.startGas}
+Current Gas:\t${resp.gasAuction.currentGas}
+End Gas:\t${resp.gasAuction.endGas}
+`
+                        } catch (e) {
+                            elements.tools.other.infoDisplay.element.value = `${e}`
+                        }
+                        this.disabled = false
+                    }
+                }
             },
             input: {
                 referAddress: {},
