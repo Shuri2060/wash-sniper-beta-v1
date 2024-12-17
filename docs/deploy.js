@@ -328,7 +328,7 @@ import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/eth
     }
     // connect buttons and elements
     // global var
-    var IS_MAINNET = true
+    var IS_MAINNET = false
 
     const tokenId = IS_MAINNET ? 48 : 999
     const tokenCZ = IS_MAINNET ? 17 : 2
@@ -366,14 +366,61 @@ import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/eth
 
     let agentWallet = undefined
 
+    async function getDeploy(address) {
+        try {
+            if (address.length !== 42 || !address.match(/^0x[0-9a-f]+$/i)) throw 'Error: Invalid address'
+
+            const payload = Hyperliquid.actions.info.spotDeployState({ user: address })
+            const resp = await Hyperliquid.requests.postInfoAsync({ url: URLS[IS_MAINNET], payload })
+            let deployState = ''
+            let state = resp.states[0]
+            if (state) {
+                deployState = `Name:\t\t\t${state.spec.name}
+Full Name:\t\t${state.fullName}
+Index:\t\t\t${state.token}
+Size Decimals:\t\t${state.spec.szDecimals}
+Wei Decimals:\t\t${state.spec.weiDecimals}
+
+User Genesis:
+${state.userGenesisBalances.reduce((s, c) => s + `${c[0]}: ${c[1]}\n`, '')}
+Token Genesis:
+${state.existingTokenGenesisBalances.reduce((s, c) => s + `${c[0]}: ${c[1]}\n`, '')}
+Total Genesis Wei:\t${state.totalGenesisBalanceWei}
+
+Spots:\t\t\t${state.spots}
+HIP2:\t\t\t${state.hyperliquidityGenesisBalance}
+Max Supply:\t\t${state.maxSupply}
+`
+            }
+            elements.test.other.infoDisplay.element.value = `Address:\t\t${address}
+
+Deployment
+${deployState}
+
+Auction Info
+Start Time:\t${new Date(resp.gasAuction.startTimeSeconds * 1000).toISOString()}
+Hours:\t\t${resp.gasAuction.durationSeconds / 3600}
+Start Gas:\t${resp.gasAuction.startGas}
+Current Gas:\t${resp.gasAuction.currentGas}
+End Gas:\t${resp.gasAuction.endGas}
+`
+        } catch (e) {
+            elements.test.other.infoDisplay.element.value = `${e}`
+        }
+    }
+
     const elements = {
         test: {
             button: {
                 connect: {
                     async click(e) {
+                        this.disabled = true
+                        elements.test.other.infoDisplay.element.disabled = true
                         try {
-                            elements.test.other.infoDisplay.element.value = 'Connecting...'
+                            elements.test.other.resultDisplay.element.value = 'Connecting...'
                             const address = (await walletConnect(CHAIN_IDS[IS_MAINNET]))[0]
+
+                            getDeploy(address)
 
                             agentWallet = ethers.Wallet.createRandom()
                             const agentAddress = agentWallet.address.toLowerCase()
@@ -392,58 +439,80 @@ import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/eth
                                     nonce,
                                 }),
                             })
-                            elements.test.other.infoDisplay.element.value = JSON.stringify(resp, null, 2)
+                            elements.test.other.resultDisplay.element.value = JSON.stringify(resp, null, 2)
                         } catch (e) {
-                            elements.test.other.infoDisplay.element.value = 'Failed to connect'
+                            elements.test.other.resultDisplay.element.value = 'Failed to connect'
                         }
+                        elements.test.other.infoDisplay.element.disabled = false
+                        this.disabled = false
                     },
                 },
                 testButton1: {
                     async click(e) {
-                        elements.test.other.infoDisplay.element.value = 'Executing...'
-                        if (agentWallet === undefined) {
-                            elements.test.other.infoDisplay.element.value = 'Connection not established'
-                            return
+                        this.disabled = true
+                        elements.test.other.infoDisplay.element.disabled = true
+                        try {
+                            elements.test.other.resultDisplay.element.value = 'Executing...'
+                            if (agentWallet === undefined) {
+                                elements.test.other.resultDisplay.element.value = 'Connection not established'
+                                return
+                            }
+                            const wei = elements.test.input.testInput1.element.value
+
+                            const address = (await walletConnect(CHAIN_IDS[IS_MAINNET]))[0]
+
+                            const resp = await Hyperliquid.requests.postExchangeAsync({
+                                url: URLS[IS_MAINNET],
+                                payload: await Hyperliquid.requests.payloadExchangeAsync({
+                                    isMainnet: IS_MAINNET,
+                                    wallet: agentWallet,
+                                    action: Hyperliquid.actions.spotDeploy.userGenesisAction({ token: tokenId, user: [], anchor: [[tokenCZ, wei]] }),
+                                    nonce: Date.now(),
+                                }),
+                            })
+                            console.log(resp)
+                            elements.test.other.resultDisplay.element.value = JSON.stringify(resp, null, 2)
+
+                            getDeploy(address)
+                        } catch (e) {
+                            elements.test.other.resultDisplay.element.value = 'Failed to set'
                         }
-                        const wei = elements.test.input.testInput1.element.value
-
-                        const address = (await walletConnect(CHAIN_IDS[IS_MAINNET]))[0]
-
-                        const resp = await Hyperliquid.requests.postExchangeAsync({
-                            url: URLS[IS_MAINNET],
-                            payload: await Hyperliquid.requests.payloadExchangeAsync({
-                                isMainnet: IS_MAINNET,
-                                wallet: agentWallet,
-                                action: Hyperliquid.actions.spotDeploy.userGenesisAction({ token: tokenId, user: [], anchor: [[tokenCZ, wei]] }),
-                                nonce: Date.now(),
-                            }),
-                        })
-                        console.log(resp)
-                        elements.test.other.infoDisplay.element.value = JSON.stringify(resp, null, 2)
+                        elements.test.other.infoDisplay.element.disabled = false
+                        this.disabled = false
                     }
                 },
                 testButton2: {
                     async click(e) {
-                        elements.test.other.infoDisplay.element.value = 'Executing...'
-                        if (agentWallet === undefined) {
-                            elements.test.other.infoDisplay.element.value = 'Connection not established'
-                            return
+                        this.disabled = true
+                        elements.test.other.infoDisplay.element.disabled = true
+                        try {
+                            elements.test.other.resultDisplay.element.value = 'Executing...'
+                            if (agentWallet === undefined) {
+                                elements.test.other.resultDisplay.element.value = 'Connection not established'
+                                return
+                            }
+                            const wei = elements.test.input.testInput1.element.value
+
+                            const address = (await walletConnect(CHAIN_IDS[IS_MAINNET]))[0]
+
+                            const resp = await Hyperliquid.requests.postExchangeAsync({
+                                url: URLS[IS_MAINNET],
+                                payload: await Hyperliquid.requests.payloadExchangeAsync({
+                                    isMainnet: IS_MAINNET,
+                                    wallet: agentWallet,
+                                    action: Hyperliquid.actions.spotDeploy.userGenesisAction({ token: tokenId, user: [], anchor: [[tokenFUN, wei]] }),
+                                    nonce: Date.now(),
+                                }),
+                            })
+                            console.log(resp)
+                            elements.test.other.resultDisplay.element.value = JSON.stringify(resp, null, 2)
+
+                            getDeploy(address)
+                        } catch (e) {
+                            elements.test.other.resultDisplay.element.value = 'Failed to set'
                         }
-                        const wei = elements.test.input.testInput1.element.value
-
-                        const address = (await walletConnect(CHAIN_IDS[IS_MAINNET]))[0]
-
-                        const resp = await Hyperliquid.requests.postExchangeAsync({
-                            url: URLS[IS_MAINNET],
-                            payload: await Hyperliquid.requests.payloadExchangeAsync({
-                                isMainnet: IS_MAINNET,
-                                wallet: agentWallet,
-                                action: Hyperliquid.actions.spotDeploy.userGenesisAction({ token: tokenId, user: [], anchor: [[tokenFUN, wei]] }),
-                                nonce: Date.now(),
-                            }),
-                        })
-                        console.log(resp)
-                        elements.test.other.infoDisplay.element.value = JSON.stringify(resp, null, 2)
+                        elements.test.other.infoDisplay.element.disabled = false
+                        this.disabled = false
                     }
                 },
                 testButton3: {
@@ -453,6 +522,7 @@ import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/eth
                 testInput1: {}
             },
             other: {
+                resultDisplay: {},
                 infoDisplay: {},
             },
         },

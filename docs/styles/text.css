@@ -42,6 +42,10 @@ textarea:read-only {
     background-color: #cceeff;
 }
 
+textarea:disabled {
+    color: rgb(88, 92, 94);
+}
+
 textarea {
     background-color: #ffffff;
     color: #04060c;
