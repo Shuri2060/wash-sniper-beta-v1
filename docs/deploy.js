@@ -328,7 +328,7 @@ import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/eth
     }
     // connect buttons and elements
     // global var
-    var IS_MAINNET = false
+    var IS_MAINNET = true
 
     const tokenId = IS_MAINNET ? 48 : 999
     const tokenCZ = IS_MAINNET ? 17 : 2
