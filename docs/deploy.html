@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper - About</title>
+    <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script>
+    <!--https://github.com/msgpack/msgpack-javascript-->
+    <script type="module" src="deploy.js"></script>
 </head>
 
 <body>
@@ -24,10 +27,14 @@
         <p>
             Yes. Wash will also be a deployment launchpad. Coming soon.
         </p>
-        <input id="testInput1" class="big" type="text" size="66" minlength="66" maxlength="66" placeholder="Nothing here bozo">
-        <button id="testButton1" class="big">Does nothing 1</button>
-        <button id="testButton2" class="big">Does nothing 2</button>
+        <button id="connect" class="login big blue">Establish Connection</button><br>
+        <br>
+        <input id="testInput1" class="big" type="text" size="66" minlength="66" maxlength="66" placeholder="Wei Decimals" value = "10000000">
+        <button id="testButton1" class="big">Set CZ</button>
+        <button id="testButton2" class="big">Set FUN</button>
         <button id="testButton3" class="big">Does nothing 3</button>
         <button id="testButton4" class="big">Does nothing 4</button>
+        <br>
+        <textarea id="infoDisplay" rows="40" cols="150" readonly></textarea>
     </div>
 </body></html>
