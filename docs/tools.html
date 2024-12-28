@@ -27,11 +27,33 @@
         <p>
             Random tools that might be handy (adding as I go along)
         </p>
-        <input id="referAddress" class="big" type="text" size="42" minlength="42" maxlength="42" placeholder="Address">
+        <h2>THIS PAGE IS TESTNET ONLY <b>- Currently debugging an issue.</b></h2>
+        <h2>Buy All Spot Tokens: 420 $BIGBEN Burn Fee  ️‍🔥 per usage</h2>
+        <p>
+            1. Establish connection<br>
+            2. Approve Burn Fee<br>
+            3. Input maximum notional you want to spend per token<br>
+            4. Buy all Hyperliquid Spot Tokens!<br>
+            <br>
+            <b>⚠️ Disclaimer ⚠️</b><br>
+            - Max slippage is set to 15%<br>
+            - This is <b>NOT</b> an endorsement of any Hyperliquid Spot Tokens.  All trading is at your own risk, including the risk of loss of all invested capital.<br>
+        </p>
+        <button id="connect" class="login big green">Establish Connection</button>
+        <button id="disconnect" class="login big red">Disable Connection</button><br>
+        <br>
+        <input id="amountUsd" class="big" type="text" size="42" placeholder="USDC per token (min $12)">
+        <button id="approveFees" class="big blue">Approve Burn Fee</button>
+        <button id="buyAll" class="big green" disabled>Buy all Spot Tokens</button><br>
+        <br>
+        <div id="tokenTable" class="gridTable"><s>Loading Tokens...</s> new feature #soontm</div><br>
+        <textarea id="resultDisplay" rows="40" cols="120" readonly>Disconnected</textarea><br>
+        <h2>Info Tools</h2>
+        <input id="referAddress" class="big" type="text" size="42" placeholder="Address">
         <button id="referFetch" class="big green">Get Referral Info</button>
         <button id="rateLimitFetch" class="big green">Get Rate Limits</button>
         <button id="deployFetch" class="big green">Get Deployment</button>
         <br>
-        <textarea id="infoDisplay" rows="40" cols="150" readonly></textarea>
+        <textarea id="infoDisplay" rows="40" cols="120" readonly></textarea>
     </div>
 </body></html>
