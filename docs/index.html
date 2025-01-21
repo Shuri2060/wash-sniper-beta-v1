@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper</title>
     <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script> <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js?version=20241215"></script>
+    <script type="module" src="index.js?version=20250120"></script>
 </head>
 
 <body>
@@ -20,6 +20,7 @@
         <a href="tools.html">Tools</a>
         <a href="tutorial.html">Tutorial</a>
         <a href="about.html">About</a>
+        <!-- <a href="tos.html">Terms of Use</a> -->
     </div>
     <div class="main">
         <h1>Wash Sniper | v0.1.0 Beta release</h1>
@@ -122,7 +123,22 @@ Presale participants bought their supply below the end price which will be the s
 <b>Snipe at your own risk.</b>
 
 <small>(source: hpump TG)</small></pre>
+        </details>       
+        <details class="launch">
+            <summary>$TIME&nbsp&nbsp</summary>
+<pre class="details">Launch: 2025-01-21 ??:??:?? UTC
+
+<b>TIME  :       1_750_000_000 (100%)</b>
+- HIP2:          17_504_000 (1%)
+- Team:                 ??? (?%)
+- Presale:              ??? (?%)
+
+<b>HIP2:</b>
+- Start:               $??? ($??? MC)
+
+<small>(source: <a href="https://x.com/TimeswapLabs" target="_blank" rel="noopener noreferrer"><small>https://x.com/TimeswapLabs</small></a>)</small></pre>
         </details>
+
         <details class="step" open>
             <summary>Step 1: Connect</summary>
             <div class="details">
@@ -163,7 +179,7 @@ Presale participants bought their supply below the end price which will be the s
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="FARM">$FARM (index 161)</option>
+                    <option value="FARM">$TIME (index 79)</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -182,7 +198,7 @@ Presale participants bought their supply below the end price which will be the s
                 <div style="height: 16px"></div>
                 <label for="queueSummary">Orders:</label><br>
                 <input id="queueSummary" type="text" size="30" disabled value="You have 0 orders queued"><br>
-                <textarea id="queueList" rows="3" cols="60" readonly></textarea>
+                <textarea id="queueList" rows="5" cols="60" readonly></textarea>
             </div>
         </details>
         <details class="step" open>
@@ -219,7 +235,7 @@ Presale participants bought their supply below the end price which will be the s
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="12:59:40" required>
+                        <input id="timeStart" type="time" step="1" value="23:59:40" required>
                         <label for="timeStart">Warning: this executes at the time today. Do not put a time after 00:00</label><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>
