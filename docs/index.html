@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper</title>
     <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script> <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js?version=20250120"></script>
+    <script type="module" src="index.js?version=20250121"></script>
 </head>
 
 <body>
@@ -149,7 +149,7 @@ Presale participants bought their supply below the end price which will be the s
                 </div>
                 <div style="height: 4px;"></div>
                 <div>
-                    <label for="washBalance">$WASH spot balance:</label>
+                    <label for="washBalance">$WASH score:</label>
                     <input id="washBalance" type="text" size="10" disabled placeholder="N/A">
                     <button id="washBalanceRefresh" class="blue" disabled>Refresh</button>
                 </div>
@@ -187,7 +187,7 @@ Presale participants bought their supply below the end price which will be the s
                 <!-- <label for="orderMarketCap">Market Cap&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                 <input id="orderMarketCap" type="number" required><br> -->
                 <label for="orderPrice">Order Price (USD)</label>
-                <input id="orderPrice" type="text" placeholder="Price (USD)"><span>&nbsp;&nbsp;&nbsp;&nbsp;(For reference, 10M FDV $TIME is ~0.0057143 price)</span><br>
+                <input id="orderPrice" type="text" placeholder="Price (USD)"><br>
                 <label for="orderNumber">Number of Orders&nbsp;</label>
                 <input id="orderNumber" type="number" required value="100">
                 <div style="height: 16px"></div>
@@ -207,15 +207,15 @@ Presale participants bought their supply below the end price which will be the s
                 <p>
                     Choose either to execute now, or at a specific time.<br>
                     <br>
-                    <b>ISSUE REPORTED</b>: sniper takes ~5 secs to trigger (both buttons), so press the execution / set the time to at least 5-10 secs before. 20 seconds before is fine. Will fix.<br>
-                    <br>
                     Refresh or Close this page to stop execution / change setup.<br>
                     <br>
                     <b>Provisional Sniper Restrictions</b><br>
-                    Orders per second = min(WASH_BALANCE / 180, 25)<br>
+                    Wash Score is the 7-day <a href="https://www.investopedia.com/terms/e/ema.asp" target="_blank" rel="noopener noreferrer">exponential moving average</a> of your $WASH balance.<br>
                     <br>
-                    So the sniper maxes out at 4500 $WASH currently.<br>
-                    Currently, the users with more than 4500 $WASH can still benefit by splitting into multiple WASH wallets to snipe on multiple tabs.
+                    Orders per second = min(WASH_SCORE / 180, 25)<br>
+                    <br>
+                    So the sniper maxes out at 4500 Wash Score currently.<br>
+                    Currently, the users with more than 4500 Wash Score can still benefit by splitting into multiple WASH wallets to snipe on multiple tabs.
                 </p>
                 <div class="grid">
                     <div class="top left">
@@ -235,7 +235,7 @@ Presale participants bought their supply below the end price which will be the s
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="23:59:40" required>
+                        <input id="timeStart" type="time" step="1" value="23:59:50" required>
                         <label for="timeStart">Warning: this executes at the time today. Do not put a time after 00:00</label><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>
