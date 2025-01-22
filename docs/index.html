@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper</title>
     <script crossorigin src="https://unpkg.com/@msgpack/msgpack"></script> <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js?version=20250121"></script>
+    <script type="module" src="index.js?version=20250122"></script>
 </head>
 
 <body>
@@ -126,7 +126,7 @@ Presale participants bought their supply below the end price which will be the s
         </details>
         <details class="launch">
             <summary>$TIME&nbsp&nbsp</summary>
-<pre class="details">Launch: 2025-01-21 ??:??:?? UTC
+<pre class="details">Launch: 2025-01-21 12:00:00 UTC
 
 <b>TIME  :       1_750_000_000 (100%)</b>
 - HIP2:                        1%
@@ -147,6 +147,34 @@ Presale participants bought their supply below the end price which will be the s
 Circulating of FDV on launch is ~20%
 
 <small>(source: <a href="https://x.com/TimeswapLabs/status/1877684283713761288" target="_blank" rel="noopener noreferrer"><small>Tokenomics</small></a>)</small></pre>
+        </details>
+        <details class="launch">
+            <summary>$ANIME&nbsp</summary>
+<pre class="details">Launch: 2025-01-23 ??:??:?? UTC
+
+<b>ANIME :                   ? (?%)</b>
+- HIP2:                         ? (?%)
+- Team:                         ? (?%)
+- Airdrop:                      ? (?%)
+
+<b>HIP2:</b>
+- Start:                       $? ($? FDV)
+
+<small>(source: <a href="https://x.com/Azuki" target="_blank" rel="noopener noreferrer"><small>https://x.com/Azuki</small></a>)</small></pre>
+        </details>
+        <details class="launch">
+            <summary>$GOD&nbsp&nbsp&nbsp</summary>
+<pre class="details">Launch: 2025-01-24 ??:??:?? UTC
+
+<b>GOD   :                   ? (?%)</b>
+- HIP2:                         ? (?%)
+- Team:                         ? (?%)
+- Airdrop:                      ? (?%)
+
+<b>HIP2:</b>
+- Start:                       $? ($? FDV)
+
+<small>(source: <a href="https://x.com/InfiniGods" target="_blank" rel="noopener noreferrer"><small>https://x.com/InfiniGods</small></a>)</small></pre>
         </details>
 
         <details class="step" open>
@@ -189,7 +217,8 @@ Circulating of FDV on launch is ~20%
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="FARM">$TIME (index 79)</option>
+                    <option value="GOD" disabled>$GOD&nbsp&nbsp&nbsp (index 165)</option>
+                    <option value="ANIME" disabled>$ANIME&nbsp (index 167)</option>
                 </select>
                 <div style="height: 16px"></div>
                 <div>WARNING : Orders that are 20x away from the current price will be rejected by the exchange, so don't set your market cap too low or too high</div>
@@ -197,8 +226,8 @@ Circulating of FDV on launch is ~20%
                 <!-- <label for="orderMarketCap">Market Cap&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                 <input id="orderMarketCap" type="number" required><br> -->
                 <label for="orderPrice">Order Price (USD)</label>
-                <input id="orderPrice" type="text" placeholder="Price (USD)"><span>&nbsp;&nbsp;&nbsp;&nbsp;(For reference, 10M FDV $TIME is ~0.0057143 price)</span><br>
-                <label for="orderNumber">Number of Orders&nbsp;</label>
+                <input id="orderPrice" type="text" placeholder="Price (USD)"><br>
+                <label for="orderNumber">Number of Orders&nbsp</label>
                 <input id="orderNumber" type="number" required value="100">
                 <div style="height: 16px"></div>
                 <button id="queueBuys" class="green big" disabled><b>Add Buys</b></button>
