@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="master.css">
     <title>Wash Sniper</title>
-    <script crossorigin src="https://unpkg.com/@msgpack/msgpack@3.0.0-beta2"></script> <!--https://github.com/msgpack/msgpack-javascript-->
-    <script type="module" src="index.js?version=20250217"></script>
+    <script src="https://unpkg.com/@msgpack/msgpack@3.0.0-beta2"></script> <!--https://github.com/msgpack/msgpack-javascript-->
+    <script type="module" src="index.js?version=20250711"></script>
 </head>
 
 <body>
@@ -27,13 +27,26 @@
         <p>
             <b>WARNING:</b> All USDC spot on the sniper account will attempted to be used to snipe. Remove excess to perps wallet or another account.<br>
             <br>
-            There are currently no fees implemented. If you have success with the sniper, please consider donating to 0x942f00b378FDB388bFAe1723ea3b7953B2ae6969. All donated funds will go towards future developments of Wash.
+            There are currently no fees implemented. If you have success with the sniper, please consider donating to <span onclick="navigator.clipboard.writeText(this.textContent)" style="background-color: #404040; cursor: pointer; padding: 1px 4px; border-radius:9999px;" title="Click to copy">0x942f00b378FDB388bFAe1723ea3b7953B2ae6969</span>.
         </p>
         <h2>Upcoming Launches</h2>
         <p>
-            Only known launches are listed here. You will be able to manually input unlisted launches after the next update.<br>
+            Only known launches are listed here. You will be able to manually input unlisted launches after v2.<br>
             All listed launch info comes from external sources, please verify it yourself and DYOR. Errors deploying and/or malicious deployment may occur.<br>
         </p>
+        <details class="launch" open>
+            <summary>$TRADE&nbsp</summary>
+<pre class="details">Launch: 2025-07-11 23:00:00 UTC
+
+<b>TRADE :               1_000_000_000 (100%)</b>
+- HIP2:                 100_000_000 (10%)
+- Incentives:           500_000_000 (50%)
+- Team:                 200_000_000 (20%)
+- Airdrop:              200_000_000 (20%)
+
+<small>(source: <a href="https://x.com/tradedotfun_" target="_blank" rel="noopener noreferrer"><small>https://x.com/tradedotfun_</small></a>)</small></pre>
+        </details>
+        <!--
         <details class="launch">
             <summary>$HYPE&nbsp&nbsp</summary>
             <p class="details">
@@ -179,6 +192,7 @@ Circulating of FDV on launch is ~20%
 
 <small>(source: <a href="https://x.com/HPSProtocol" target="_blank" rel="noopener noreferrer"><small>https://x.com/HPSProtocol</small></a>)</small></pre>
         </details>
+        -->
 
         <details class="step" open>
             <summary>Step 1: Connect</summary>
@@ -220,7 +234,7 @@ Circulating of FDV on launch is ~20%
             <div class="details">
                 <label for="token">Token</label>
                 <select id="token">
-                    <option value="WHYPI">$WHYPI&nbsp (index 217)</option>
+                    <option value="WHYPI">$TRADE&nbsp (index 281)</option>
                     <!-- <option value="ANIME" disabled>$ANIME&nbsp (index 167)</option> -->
                 </select>
                 <div style="height: 16px"></div>
@@ -278,7 +292,7 @@ Circulating of FDV on launch is ~20%
                     </div>
                     <div class="bottom right">
                         <label for="timeStart">Start Time UTC</label>
-                        <input id="timeStart" type="time" step="1" value="20:59:50" required>
+                        <input id="timeStart" type="time" step="1" value="22:59:50" required>
                         <label for="timeStart">Warning: this executes at the time today. Do not put a time after 00:00</label><br>
                         <label for="timeEnd" hidden>End&nbsp&nbsp Time UTC</label>
                         <input id="timeEnd" hidden type="time" step="1" value="18:00:45" required><br>
